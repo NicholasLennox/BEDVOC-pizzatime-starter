@@ -44,9 +44,23 @@ $(document).ready(function() {
         pizzaTotalPrice: pizzaTotalPrice
     }
 
+    updateOrderSummary = () => {    
+        $("#order-list").empty()
+        orderPizzas.forEach(function() {
+            let orderListItem = $(`<li>${pizzaOrder.quantity} x ${pizzaOrder.pizzaName} - ${pizzaOrder.pizzaTotalPrice} NOK</li>`)
+            $("#order-list").append(orderListItem)
+        })
+
+        $("#order-total").text(orderTotal)
+    }
+    
     orderPizzas.push(pizzaOrder)
+    updateOrderSummary()
     console.log(pizzaOrder)
     console.log(orderPizzas)
     console.log("Your total is " + orderTotal+ " NOK")
+
+    this.reset()
 })
+
 })
