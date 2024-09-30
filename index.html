@@ -13,26 +13,47 @@
         <div class="form-wrapper">
             <h2>It's Pizza Time <span class="spider-icon">🕷</span></h2>
             <form id="pizza-form" class="form">
-                <!--Pizza type-->
+                What are you hungry for?
                 <div class="form-group-stacked">
-                    <!--Select with options-->
+                    <select name="pizza-type" id="pizza-type">
+                        <option value="Margherita-100">Margherita (+100 NOK)</option>
+                        <option value="Pepperoni-120">Pepperoni (+120 NOK)</option>
+                        <option value="BBQChicken-130">BBQ Chicken (+130 NOK)</option>
+                        <option value="Vegetarian-110">Vegetarian (+110 NOK)</option>
+                        <option value="FriendlySpecial-140">Friendly Neighborhood Special (+140 NOK)</option>
+                    </select>
                 </div>
-                <!--Pizza size-->
+                Size:
                 <div class="form-group-stacked">
-                    <!--Select with options-->
+                    <select name="pizza-size" id="pizza-size">
+                        <option value="Small-0">Small (No extra cost)</option>
+                        <option value="Medium-20">Medium (+20 NOK)</option>
+                        <option value="Large-40">Large (+40 NOK)</option>
+                        <option value="SpideySize-60">Spidey Size (+60 NOK)</option>
+                    </select>
                 </div>
-                <!--Toppings-->
                 <fieldset class="toppings-wrapper">
                     <legend>Any toppings? (+10 NOK each)</legend>
-                    <!--Input (type checkbox) + labels-->
+                    <div class="toppings">
+                        <input type="checkbox" id="pepperoni" value="Pepperoni-10">
+                            <label for="pepperoni">Pepperoni</label>
+                    </div>
+                    <div class="toppings">
+                        <input type="checkbox" id="mushrooms" value="Mushrooms-10">
+                            <label for="mushrooms">Mushrooms</label>
+                    </div>
+                    <div class="toppings">
+                        <input type="checkbox" id="webSlingingSpice" value="WebSlingingSpice-10">
+                            <label for="webSlingingSpice">Web-Slinging Spice</label>
+                    </div>
                 </fieldset>
-                <!--Quantity-->
                 <div class="inline-form-group">
-                    <!--Label + input, min 1, max 10, default value 1-->
+                    <label for="quantity">Quantity:</label>
+                    <input type="number" id="quantity" name="quantity" min="1" max="10" placeholder="1">
                 </div>
-                <!--Form buttons-->
                 <div class="inline-form-group">
-                    <!--Sumbit and reset buttons-->
+                    <button type="submit" class="btn-submit">Add to order</button>
+                    <button type="reset" class="btn-clear">Clear order</button>
                 </div>
             </form>
         </div>
