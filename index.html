@@ -35,21 +35,21 @@
                 <fieldset class="toppings-wrapper">
                     <legend>Any toppings? (+10 NOK each)</legend>
                     <div class="toppings">
-                        <input type="checkbox" id="pepperoni" value="Pepperoni-10">
+                        <input type="checkbox" id="pepperoni" name="topping" value="Pepperoni-10">
                             <label for="pepperoni">Pepperoni</label>
                     </div>
                     <div class="toppings">
-                        <input type="checkbox" id="mushrooms" value="Mushrooms-10">
+                        <input type="checkbox" id="mushrooms" name="topping" value="Mushrooms-10">
                             <label for="mushrooms">Mushrooms</label>
                     </div>
                     <div class="toppings">
-                        <input type="checkbox" id="webSlingingSpice" value="WebSlingingSpice-10">
+                        <input type="checkbox" id="webSlingingSpice" name="topping" value="WebSlingingSpice-10">
                             <label for="webSlingingSpice">Web-Slinging Spice</label>
                     </div>
                 </fieldset>
                 <div class="inline-form-group">
                     <label for="quantity">Quantity:</label>
-                    <input type="number" id="quantity" name="quantity" min="1" max="10" placeholder="1">
+                    <input type="number" id="quantity" name="quantity" min="1" max="10" value="1">
                 </div>
                 <div class="inline-form-group">
                     <button type="submit" class="btn-submit">Add to order</button>
