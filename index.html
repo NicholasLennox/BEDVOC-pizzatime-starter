@@ -16,23 +16,59 @@
                 <!--Pizza type-->
                 <div class="form-group-stacked">
                     <!--Select with options-->
+                    <p>What are you hungery for?</p>
+                    <select name="pizzas" id="pizza-type">
+                        <option value="Margherita-100">Margherita (+100 NOK)</option>
+                        <option value="Pepperoni-120">Pepperoni (+120 NOK)</option>
+                        <option value="BBQChicken-130">BBQ Chicken (+130 NOK)</option>
+                        <option value="Vegetarian-110">Vegetarian (+110 NOK)</option>
+                        <option value="FriendlySpecial-140">Friendly Neighborhood Special (+140 NOK)</option>
+                    </select>
                 </div>
                 <!--Pizza size-->
                 <div class="form-group-stacked">
                     <!--Select with options-->
+                    <p>What are you hungery for?</p>
+                    <select name="pizzaSize" id="pizza-size">
+                        <option value="Small-0">Small (No extra cost)</option>
+                        <option value="Medium-20">Medium (+20 NOK)</option>
+                        <option value="Large-40">Large (+40 NOK)</option>
+                        <option value="SpideySize-60">Spidey Size (+60 NOK)</option>
+                    </select>
                 </div>
                 <!--Toppings-->
                 <fieldset class="toppings-wrapper">
-                    <legend>Any toppings? (+10 NOK each)</legend>
                     <!--Input (type checkbox) + labels-->
+                    <legend>Any toppings? (+10 NOK each)</legend>
+                    <div>
+                        <label for="pepperoni">
+                            <input type="checkbox" name="toppings" value="Pepperoni-10">
+                            Pepperoni (+10 NOK)
+                        </label>
+                    </div>
+                    <div>
+                        <label for="mushrooms">
+                            <input type="checkbox" name="toppings" value="Mushrooms-10">
+                            Mushrooms (+10 NOK)
+                        </label>
+                    </div>
+                    <div>
+                        <label for="webSlingingSpice">
+                            <input type="checkbox" name="toppings" value="WebSlingingSpice-10">
+                            Web-Slinging Spice (+10 NOK)
+                        </label>
+                    </div>
                 </fieldset>
                 <!--Quantity-->
                 <div class="inline-form-group">
                     <!--Label + input, min 1, max 10, default value 1-->
+                    <input type="number" value="1" min="1" max="10">
                 </div>
                 <!--Form buttons-->
                 <div class="inline-form-group">
                     <!--Sumbit and reset buttons-->
+                    <input type="button" value="Add to order" class="btn-submit">
+                    <input type="button" value="Clear order" class="btn-clear">
                 </div>
             </form>
         </div>
