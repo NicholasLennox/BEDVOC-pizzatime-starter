@@ -46,7 +46,7 @@ $(document).ready(function() {
 
     updateOrderSummary = () => {    
         $("#order-list").empty()
-        orderPizzas.forEach(function() {
+        orderPizzas.forEach(function(pizzaOrder) {
             let orderListItem = $(`<li>${pizzaOrder.quantity} x ${pizzaOrder.pizzaName} - ${pizzaOrder.pizzaTotalPrice} NOK</li>`)
             $("#order-list").append(orderListItem)
         })
@@ -59,8 +59,36 @@ $(document).ready(function() {
     console.log(pizzaOrder)
     console.log(orderPizzas)
     console.log("Your total is " + orderTotal+ " NOK")
-
     this.reset()
 })
 
+    luhnCheck = (input) => {
+        const cardNumber = input.toString()
+        const digits = cardNumber.replace(/\D/g, "").split("").map(Number)
+        let sum = 0
+        let isSecond = false
+        for (let i = digits.length - 1; i>= 0; i--) {
+            let digit = digits[i]
+            if (isSecond) {
+                digit *= 2
+                if (digit > 9) {
+                    digit -= 9
+                }
+            }
+            sum += digit
+            isSecond = !isSecond 
+        }
+        return sum % 10 === 0
+    }
+
+    $("#submit-payment").on("click", function () {
+        const cardNumber = $("#credit-card").val()
+        const paymentMessage = $("#payment-message")
+
+        if (luhnCheck(cardNumber)) {
+            paymentMessage.text("Payment Successful!").css("color", "green")
+        } else {
+            paymentMessage.text("Invalid credit card number.").css("color", "red")
+        }
+    })
 })
