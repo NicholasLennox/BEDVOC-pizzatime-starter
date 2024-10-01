@@ -87,6 +87,16 @@ $(document).ready(function() {
 
         if (luhnCheck(cardNumber)) {
             paymentMessage.text("Payment Successful!").css("color", "green")
+
+            let orderInfo = {
+                "Pizza Orders": orderPizzas,
+                "Order Total": orderTotal,
+                "Credit Card Number": $("#credit-card").val()
+            } 
+
+            const myJSON = JSON.stringify(orderInfo)
+            console.log(myJSON)
+
         } else {
             paymentMessage.text("Invalid credit card number.").css("color", "red")
         }
