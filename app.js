@@ -41,24 +41,26 @@ function addOrder(event) {
 	this.form.reset();
 }
 
-function clearOrder(event) { 
-    event.preventDefault();
-    orderPizzas = [];
-    orderList.innerHTML = ''
-    orderTotal.innerHTML = 0
+function clearOrder(event) {
+	event.preventDefault();
+	orderPizzas = [];
+	orderList.innerHTML = '';
+	orderTotal.innerHTML = 0;
 }
 
-function pay(event) {
+async function pay(event) {
     event.preventDefault();
     const cardNum = cardNumber.value.replace(/[^0-9]/g, '');
-    const valid = checkLuhn(cardNum)
-    if (!valid) return
+    const valid = checkLuhn(cardNum);
+    if (!valid) return;
+    const location = await getLocation();
     const obj = {
-		pizzas: orderPizzas,
+        pizzas: orderPizzas,
         total: orderTotal.innerHTML,
-        cardNumber: cardNum
+        cardNumber: cardNum,
+        location: location,
     };
-    console.log(obj)
+    console.log(obj);
 }
 
 function checkLuhn(num) {
@@ -83,12 +85,12 @@ function checkLuhn(num) {
 
 	if (final === num + last) {
 		paymentMsg.innerText = 'Payment successful!';
-        paymentMsg.style.color = 'green';
-        return true
+		paymentMsg.style.color = 'green';
+		return true;
 	} else {
 		paymentMsg.innerText = 'Invalid credit card number.';
-        paymentMsg.style.color = 'red';
-        return false
+		paymentMsg.style.color = 'red';
+		return false;
 	}
 }
 
@@ -105,4 +107,17 @@ function updateOrderSummary() {
 	let tot = parseInt(orderTotal.innerHTML);
 	tot += orderPizzas[orderPizzas.length - 1].pizzaTotalPrice;
 	orderTotal.innerText = tot;
+}
+
+async function getLocation() {
+	if (navigator.geolocation) {
+		try {
+			const position = await new Promise((resolve, reject) => {
+				navigator.geolocation.getCurrentPosition(resolve, reject);
+			});
+			return position.coords;
+		} catch (err) {
+			console.error(err);
+		}
+	} else return 'Geolocation is not supported by this browser.';
 }
