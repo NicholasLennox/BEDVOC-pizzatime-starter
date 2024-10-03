@@ -1,57 +1,144 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pizza Store</title>
-    <link rel="stylesheet" href="site.css">
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script src="app.js" defer></script>
-</head>
-<body>
-    <div id="pizza-container">
-        <div class="form-wrapper">
-            <h2>It's Pizza Time <span class="spider-icon">🕷</span></h2>
-            <form id="pizza-form" class="form">
-                <!--Pizza type-->
-                <div class="form-group-stacked">
-                    <!--Select with options-->
-                </div>
-                <!--Pizza size-->
-                <div class="form-group-stacked">
-                    <!--Select with options-->
-                </div>
-                <!--Toppings-->
-                <fieldset class="toppings-wrapper">
-                    <legend>Any toppings? (+10 NOK each)</legend>
-                    <!--Input (type checkbox) + labels-->
-                </fieldset>
-                <!--Quantity-->
-                <div class="inline-form-group">
-                    <!--Label + input, min 1, max 10, default value 1-->
-                </div>
-                <!--Form buttons-->
-                <div class="inline-form-group">
-                    <!--Sumbit and reset buttons-->
-                </div>
-            </form>
-        </div>
-    </div>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Pizza Store</title>
+		<link rel="stylesheet" href="site.css" />
+		<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+		<script src="app.js" defer></script>
+	</head>
+	<body>
+		<div id="pizza-container">
+			<div class="form-wrapper">
+				<h2>It's Pizza Time <span class="spider-icon">🕷</span></h2>
+				<form id="pizza-form" class="form">
+					<!--Pizza type-->
+					<div class="form-group-stacked">
+						<!--Select with options-->
+						<p>What are you hungery for?</p>
+						<select name="pizzas" id="pizza-type">
+							<option value="Margherita-100">
+								Margherita (+100 NOK)
+							</option>
+							<option value="Pepperoni-120">
+								Pepperoni (+120 NOK)
+							</option>
+							<option value="BBQChicken-130">
+								BBQ Chicken (+130 NOK)
+							</option>
+							<option value="Vegetarian-110">
+								Vegetarian (+110 NOK)
+							</option>
+							<option value="FriendlySpecial-140">
+								Friendly Neighborhood Special (+140 NOK)
+							</option>
+						</select>
+					</div>
+					<!--Pizza size-->
+					<div class="form-group-stacked">
+						<!--Select with options-->
+						<p>What are you hungery for?</p>
+						<select name="pizzaSize" id="pizza-size">
+							<option value="Small-0">
+								Small (No extra cost)
+							</option>
+							<option value="Medium-20">Medium (+20 NOK)</option>
+							<option value="Large-40">Large (+40 NOK)</option>
+							<option value="SpideySize-60">
+								Spidey Size (+60 NOK)
+							</option>
+						</select>
+					</div>
+					<!--Toppings-->
+					<fieldset class="toppings-wrapper">
+						<!--Input (type checkbox) + labels-->
+						<legend>Any toppings? (+10 NOK each)</legend>
+						<div>
+							<label for="pepperoni">
+								<input
+									type="checkbox"
+									name="toppings"
+									value="Pepperoni-10"
+								/>
+								Pepperoni (+10 NOK)
+							</label>
+						</div>
+						<div>
+							<label for="mushrooms">
+								<input
+									type="checkbox"
+									name="toppings"
+									value="Mushrooms-10"
+								/>
+								Mushrooms (+10 NOK)
+							</label>
+						</div>
+						<div>
+							<label for="webSlingingSpice">
+								<input
+									type="checkbox"
+									name="toppings"
+									value="WebSlingingSpice-10"
+								/>
+								Web-Slinging Spice (+10 NOK)
+							</label>
+						</div>
+					</fieldset>
+					<!--Quantity-->
+					<div class="inline-form-group">
+						<!--Label + input, min 1, max 10, default value 1-->
+						<input
+							type="number"
+							id="amount"
+							value="1"
+							min="1"
+							max="10"
+						/>
+					</div>
+					<!--Form buttons-->
+					<div class="inline-form-group">
+						<!--Sumbit and reset buttons-->
+						<input
+							type="button"
+							value="Add to order"
+							class="btn-submit"
+							id="btn-submit"
+						/>
+						<input
+							type="button"
+							value="Clear order"
+							class="btn-clear"
+							id="btn-clear"
+						/>
+					</div>
+				</form>
+			</div>
+		</div>
 
-    <div id="order-summary-container">
-        <div class="order-summary">
-            <h3>Order Summary</h3>
-            <ul id="order-list"></ul>
-            <p><strong>Total:</strong> <span id="order-total">0</span> NOK</p>
-        </div>
+		<div id="order-summary-container">
+			<div class="order-summary">
+				<h3>Order Summary</h3>
+				<ul id="order-list"></ul>
+				<p>
+					<strong>Total:</strong> <span id="order-total">0</span> NOK
+				</p>
+			</div>
 
-        <div class="payment-panel">
-            <h3>Complete Your Purchase</h3>
-            <label for="credit-card">Enter your credit card number:</label>
-            <input type="text" id="credit-card" name="credit-card" placeholder="1234-5678-9012-3456">
-            <button class="btn-submit-payment" id="submit-payment">Pay</button>
-            <p id="payment-message"></p>
-        </div>
-    </div>
-</body>
+			<div class="payment-panel">
+				<h3>Complete Your Purchase</h3>
+				<label for="credit-card">Enter your credit card number:</label>
+				<input
+					type="text"
+					id="credit-card"
+					name="credit-card"
+					placeholder="1234-5678-9012-3456"
+				/>
+				<button class="btn-submit-payment" id="submit-payment">
+					Pay
+				</button>
+				<p id="payment-message"></p>
+			</div>
+		</div>
+	</body>
 </html>
